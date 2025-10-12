@@ -112,21 +112,58 @@
         }
 
         .service-card {
-            background: #f8f9fa;
+            background-color: #f8f9fa;  
+            background-size: cover;       /* make the image cover the div */
+            background-position: center;  
+            background-repeat: no-repeat; 
+            
             padding: 2rem;
             border-radius: 10px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+
+            color: white;            
+            display: flex;
+            flex-direction: column;
+            justify-content: top;   
+            position: relative;          
+            min-height: 250px;           
         }
 
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(53, 57, 64, 0.7); /* black overlay with 40% opacity */
+            border-radius: 10px;
+            z-index: 0;  /* behind text */
+        }
+
+
+        .service-card h3,
+        .service-card p {
+            position: relative; /* ensures text appears above overlay */
+            z-index: 1;
+        }
+
+        /* Hover effect */
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        .service-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
+        /* Unique images per card */
+        .service-card.devops {
+            background-image: url('images/devops.jpg');
         }
+
+        .service-card.science {
+            background-image: url('images/science.jpg');
+        }
+
+        .service-card.documentation {
+            background-image: url('images/documentation.jpg');
+        }
+
 
         .expertise {
             background: #f8f9fa;
@@ -204,15 +241,15 @@
     <div class="container" id="services">
         <h2 class="section-title">Our Services</h2>
         <div class="services">
-            <div class="service-card">
+            <div class="service-card devops">
                 <h3>DevOps Training Design</h3>
                 <p>Comprehensive course development for novice to advanced DevOps engineers. From CI/CD pipelines to cloud infrastructure, we create practical, hands-on learning experiences.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card science">
                 <h3>Science & Tech Education</h3>
                 <p>Specialized instructional design for biochemistry, computer science, and technical disciplines. We bridge the gap between complex concepts and learner understanding.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card documentation">
                 <h3>Technical Documentation</h3>
                 <p>Clear, user-focused documentation and training materials for technical products, software, and scientific processes.</p>
             </div>
